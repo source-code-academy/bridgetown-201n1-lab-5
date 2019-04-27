@@ -93,9 +93,11 @@ Test this function by hand in the console to get it working, and when you think 
 
 /////////////////////////////////////
 /* Problem 4
-Write a function called sumArray() that takes in an array of numbers as its single argument and then returns an array where the first element is the sum of the numbers in the array, and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
+1. Write a function called sumArray() that takes in an array of numbers as its single argument - Done
+2a. and then returns an array where the first element is the sum of the numbers in the array - Done
+2b. and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
 
-"2,3,4 was passed in as an array of numbers, and 9 is their sum."
+"2,3,4 was passed in as an array of numbers, and 9 is their sum." - Done
 
 IMPORTANT DETAIL: You may not use the arithmetic operator + in this function. To do addition, use your sum() function that you've already created. You're going to have to be resourceful to figure out how to do this. However, you may continue to use the + operator for string concatenation.
 
@@ -104,19 +106,34 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 // var testArray = [2, 3, 4]; //eslint-disable-line
 
-// function sumArray(sumArr) {
-//   //eslint-disable-line
-// }
+function sumArray(sumArr) {
+  // eslint-disable-line
+  // Break down array into 3 separate numbers
+  sumArr = [sumArr[0], sumArr[1], sumArr[2]];
+  console.log('First number is ' + sumArr[0] + ', second number is ' + sumArr[1] + ' and third number is ' + sumArr[2] + '.');
+  // Calculate the sum of the first two variables and assign the returned array to sum_2_numbers
+  var sum_2_Numbers = sum(sumArr[0], sumArr[1]);
+  console.log('Sum of first 2 numbers is: ' + sum_2_Numbers[0] + '.');
+  // Calculate sum of first 2 numbers and third number and assign returned array to sum_3_numbers
+  var sum_3_numbers = sum(sum_2_Numbers[0], sumArr[2]);
+  //Access first element in the returned array and assign to a variable called total
+  var total = sum_3_numbers[0];
+  var string = sumArr[0] + ',' + sumArr[1] + ',' + sumArr[2] + ' was passed in as an array of numbers, and ' + total + ' is their sum.';
+  console.log(string);
+  return [total, string];
+}
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
 /////////////////////////////////////
 /* Problem 5
-Write a function called multiplyArray() that takes an array of numbers as its argument and returns an array whose first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
+1. Write a function called multiplyArray() - Done
+2. that takes an array of numbers as its argument - Done
+3. and returns an array whose first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
 
 "The numbers 2,3,4 have a product of 24."
 
@@ -124,13 +141,26 @@ IMPORTANT DETAIL: You may not use the arithmetic operator * in this function. To
 
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testMultiplyArray() function and see if the test passes.*/
 
-// // Write your code here
-// function multiplyArray(multArr) {
-//   //eslint-disable-line
-// }
+// Write your code here
+function multiplyArray(multArr) {
+  //eslint-disable-line
+  // Break down array into 3 separate numbers
+  multArr = [multArr[0], multArr[1], multArr[2]];
+  console.log('First number is ' + multArr[0] + ', second number is ' + multArr[1] + ' and third number is ' + multArr[2] + '.');
+  // Calculate the sum of the first two variables and assign the returned array to prod_2
+  var prod_2 = multiply(multArr[0], multArr[1]);
+  console.log('Product of first 2 numbers is ' + prod_2[0] + '.');
+  // Calculate the product of the first 2 numbers and the 3rd number and assign the returned array to prod_3
+  var prod_3 = multiply(prod_2[0], multArr[2]);
+  // Access first element in the returned array and assign to a variable called prod_total
+  var prod_total = prod_3[0];
+  var multi_string = 'The numbers ' + multArr[0] + ',' + multArr[1] + ',' + multArr[2] + ' have a product of ' + prod_total + '.';
+  console.log(multi_string);
+  return [prod_total, multi_string]
+}
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray(testArray);
+testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop.
 
