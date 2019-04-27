@@ -131,7 +131,9 @@ testSumArray(testArray);
 
 /////////////////////////////////////
 /* Problem 5
-Write a function called multiplyArray() that takes an array of numbers as its argument and returns an array whose first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
+1. Write a function called multiplyArray() - Done
+2. that takes an array of numbers as its argument - Done
+3. and returns an array whose first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
 
 "The numbers 2,3,4 have a product of 24."
 
@@ -142,10 +144,23 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 function multiplyArray(multArr) {
   //eslint-disable-line
+  // Break down array into 3 separate numbers
+  multArr = [multArr[0], multArr[1], multArr[2]];
+  console.log('First number is ' + multArr[0] + ', second number is ' + multArr[1] + ' and third number is ' + multArr[2] + '.');
+  // Calculate the sum of the first two variables and assign the returned array to prod_2
+  var prod_2 = multiply(multArr[0], multArr[1]);
+  console.log('Product of first 2 numbers is ' + prod_2[0] + '.');
+  // Calculate the product of the first 2 numbers and the 3rd number and assign the returned array to prod_3
+  var prod_3 = multiply(prod_2[0], multArr[2]);
+  // Access first element in the returned array and assign to a variable called prod_total
+  var prod_total = prod_3[0];
+  var multi_string = 'The numbers ' + multArr[0] + ',' + multArr[1] + ',' + multArr[2] + ' have a product of ' + prod_total + '.';
+  console.log(multi_string);
+  return [prod_total, multi_string]
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray(testArray);
+testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop.
 
