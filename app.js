@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /////////////////////////////////////
 /* Problem 1 (this is your demo that we'll solve in class)
 1. Write a function called sum() - DONE
@@ -16,7 +16,7 @@ function sum(a, b) {
   // Input
   //eslint-disable-line
   var total = a + b; //processing
-  var string = 'The sum of ' + a + ' and ' + b + ' is ' + total + '.';
+  var string = "The sum of " + a + " and " + b + " is " + total + ".";
   return [total, string]; //Output
 }
 
@@ -54,7 +54,7 @@ testMultiply(5, 9);
 /* Problem 3
 Write a function called sumAndMultiply() that takes in three numbers as separate arguments and returns an array
  where the first element is the sum of those three numbers, t
- he second element is the product of those three numbers,  
+ he second element is the product of those three numbers,
  and the third and fourth elements are strings that EXACTLY follow this example and use the values that were input into the function:
 
 Third element: "4 and 7 and 5 sum to 16."
@@ -79,7 +79,7 @@ function sumAndMultiply(a, b, c) {
   //Access first element in the array and assigning to a variable called total.
   var total = totalResults[0];
 
-  var sumStr = a + ' and ' + b + ' and ' + c + ' sum to ' + total + '.';
+  var sumStr = a + " and " + b + " and " + c + " sum to " + total + ".";
 
   var product = multiply(multiply(a, b)[0], c)[0];
   var prodStr = `The product of ${a} and ${b} and ${c} is ${product}.`;
@@ -106,11 +106,26 @@ var testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) {
   //eslint-disable-line
+  var total = 0;
+  for (var i = 0; i < sumArr.length; i++) {
+    var currentNumber = sumArr[i];
+    console.log({ currentNumber });
+    //adding current number to next number(?)
+    var arrayResults = sum(total, currentNumber);
+    total = arrayResults[0];
+  }
+  var sumStr =
+    sumArr +
+    " was passed in as an array of numbers, and " +
+    total +
+    " is their sum.";
+  console.log(sumStr);
+  return [total, sumStr];
 }
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -125,12 +140,28 @@ IMPORTANT DETAIL: You may not use the arithmetic operator * in this function. To
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testMultiplyArray() function and see if the test passes.*/
 
 // Write your code here
+var testArray = [2, 3, 4]; //eslint-disable-line
+
 function multiplyArray(multArr) {
   //eslint-disable-line
+  //assigning the product to 1 so that the current number stays 2 on the first run.
+  var product = 1;
+  //loop through the array
+  for (var i = 0; i < multArr.length; i++) {
+    var currentNumber = multArr[i];
+    console.log({ currentNumber });
+    //multiplying current number to next number.
+    var resultsArray = multiply(product, currentNumber);
+    console.log(resultsArray);
+    //Extract number from index 0 of the array and assign to the variable product.
+    product = resultsArray[0];
+  }
+  var multString = 'The numbers '+ multArr + ' have a product of 24.';
+  return [product, multString];
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray(testArray);
+testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop.
 
@@ -155,9 +186,22 @@ var testDynamicArray = [1, 2, 3, 4, 5]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) {
   //eslint-disable-line
+  //assigning the product to 1 so the current number stays the same.
+  var product = 1;
+  //loop through the array.
+  for (var i = 0; i < dynamicArray.length; i++) {
+    var currentNumber = dynamicArray[i];
+    console.log({ currentNumber});
+    var resultsArray = multiply(product, currentNumber);
+    console.log(resultsArray);
+    //Extract number from index of the array and assign to the variable product.
+    product = resultsArray[0];
+  }
+  var dynString = 'The numbers ' + dynamicArray + ' have a product of ' + product + '.';
+  return [product, dynString];
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyAnyArray(testDynamicArray);
+testMultiplyAnyArray(testDynamicArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
